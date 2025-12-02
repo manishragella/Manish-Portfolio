@@ -1,333 +1,549 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manish Portfolio</title>
+    <title>Manish Ragella | Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        black: '#050505',
+                        dark: '#0a0a0a',
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-gradient-purple {
+            background: linear-gradient(to right, #c084fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-text {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.95); }
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        /* Blob Animation */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: blob-bounce 10s infinite alternate;
+        }
+
+        @keyframes blob-bounce {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+    </style>
 </head>
-<style>
-    @charset "utf-8";
+<body class="antialiased selection:bg-white selection:text-black">
 
-/******* Fonts Import Start **********/
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-/********* Fonts Face CSS End **********/
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-text text-white">MR</div>
+    </div>
 
-/******* Common Element CSS Start ******/
-* {
-  margin: 0px;
-  padding: 0px;
-}
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-}
-.clear {
-  clear: both;
-}
-img {
-  max-width: 100%;
-  border: 0px;
-}
-ul,
-ol {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-  outline: none;
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-}
-a:focus,
-a:active,
-a:visited,
-a:hover {
-  text-decoration: none;
-  outline: none;
-}
-a:hover {
-  color: #e73700;
-}
-h2 {
-  margin-bottom: 48px;
-  padding-bottom: 16px;
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 700;
-  position: relative;
-  text-transform: capitalize;
-}
-h3 {
-  margin: 0 0 10px;
-  font-size: 28px;
-  line-height: 36px;
-}
-button {
-  outline: none !important;
-}
-/******* Common Element CSS End *********/
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-[-1] grid-bg pointer-events-none"></div>
+    <div class="fixed top-0 left-0 blob"></div>
+    <div class="fixed bottom-0 right-0 blob" style="animation-delay: -5s;"></div>
 
-/* -------- title style ------- */
-.line-title {
-  position: relative;
-  width: 400px;
-}
-.line-title::before,
-.line-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  border-radius: 2px;
-}
-.line-title::before {
-  width: 100%;
-  background: #f2f2f2;
-}
-.line-title::after {
-  width: 32px;
-  background: #e73700;
-}
-
-/******* Middle section CSS Start ******/
-/* -------- Landing page ------- */
-.game-section {
-  padding: 60px 50px;
-}
-.game-section .owl-stage {
-  margin: 15px 0;
-  display: flex;
-  display: -webkit-flex;
-}
-.game-section .item {
-  margin: 0 15px 60px;
-  width: 320px;
-  height: 400px;
-  display: flex;
-  display: -webkit-flex;
-  align-items: flex-end;
-  -webkit-align-items: flex-end;
-  background: #343434 no-repeat center center / cover;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  cursor: pointer;
-}
-.game-section .item.active {
-  width: 500px;
-  box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
-  -webkit-box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
-}
-.game-section .item:after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-}
-.game-section .item-desc {
-  padding: 0 24px 12px;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  transform: translateY(calc(100% - 54px));
-  -webkit-transform: translateY(calc(100% - 54px));
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-}
-.game-section .item.active .item-desc {
-  transform: none;
-  -webkit-transform: none;
-}
-.game-section .item-desc p {
-  opacity: 0;
-  -webkit-transform: translateY(32px);
-  transform: translateY(32px);
-  transition: all 0.4s ease-in-out 0.2s;
-  -webkit-transition: all 0.4s ease-in-out 0.2s;
-}
-.game-section .item.active .item-desc p {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-}
-.game-section .owl-theme.custom-carousel .owl-dots {
-  margin-top: -20px;
-  position: relative;
-  z-index: 5;
-}
-/******** Middle section CSS End *******/
-
-/***** responsive css Start ******/
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  h2 {
-    margin-bottom: 32px;
-  }
-  h3 {
-    margin: 0 0 8px;
-    font-size: 24px;
-    line-height: 32px;
-  }
-
-  /* -------- Landing page ------- */
-  .game-section {
-    padding: 50px 30px;
-  }
-  .game-section .item {
-    margin: 0 12px 60px;
-    width: 260px;
-    height: 360px;
-  }
-  .game-section .item.active {
-    width: 400px;
-  }
-  .game-section .item-desc {
-    transform: translateY(calc(100% - 46px));
-    -webkit-transform: translateY(calc(100% - 46px));
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  h2 {
-    margin-bottom: 32px;
-  }
-  h3 {
-    margin: 0 0 8px;
-    font-size: 24px;
-    line-height: 32px;
-  }
-  .line-title {
-    width: 330px;
-  }
-
-  /* -------- Landing page ------- */
-  .game-section {
-    padding: 50px 30px 40px;
-  }
-  .game-section .item {
-    margin: 0 12px 60px;
-    width: 240px;
-    height: 330px;
-  }
-  .game-section .item.active {
-    width: 360px;
-  }
-  .game-section .item-desc {
-    transform: translateY(calc(100% - 42px));
-    -webkit-transform: translateY(calc(100% - 42px));
-  }
-}
-
-@media (max-width: 767px) {
-  body {
-    font-size: 14px;
-  }
-  h2 {
-    margin-bottom: 20px;
-  }
-  h3 {
-    margin: 0 0 8px;
-    font-size: 19px;
-    line-height: 24px;
-  }
-  .line-title {
-    width: 250px;
-  }
-
-  /* -------- Landing page ------- */
-  .game-section {
-    padding: 30px 15px 20px;
-  }
-  .game-section .item {
-    margin: 0 10px 40px;
-    width: 200px;
-    height: 280px;
-  }
-  .game-section .item.active {
-    width: 270px;
-    box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
-  }
-  .game-section .item-desc {
-    padding: 0 14px 5px;
-    transform: translateY(calc(100% - 42px));
-    -webkit-transform: translateY(calc(100% - 42px));
-  }
-}
-
-</style>
-<body>
-    <section class="game-section">
-        <h2 class="line-title">trending games</h2>
-        <div class="owl-carousel custom-carousel owl-theme">
-          <div class="item active" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/dota-2.jpg);">
-            <div class="item-desc">
-              <h3>Dota 2</h3>
-              <p>Dota 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white hover:text-gray-300 transition-colors">
+                MR<span class="text-xs align-top opacity-50">.dev</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#instagram" class="hover:text-white transition-colors">Creator</a>
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="px-5 py-2 rounded-full border border-gray-700 hover:bg-white hover:text-black transition-all">Contact</a>
             </div>
-          </div>
-          <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/winter-3.jpg);">
-            <div class="item-desc">
-              <h3>The Witcher 3</h3>
-              <p>The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense
-                of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-            </div>
-          </div>
-          <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/rdr-2.jpg);">
-            <div class="item-desc">
-              <h3>RDR 2</h3>
-              <p>RDR 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-            </div>
-          </div>
-          <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/pubg.jpg);">
-            <div class="item-desc">
-              <h3>PUBG Mobile</h3>
-              <p>PUBG 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-            </div>
-          </div>
-          <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/fortnite.jpg);">
-            <div class="item-desc">
-              <h3>Fortnite</h3>
-              <p>Battle royale where 100 players fight to be the last person standing. which was a community-created mod
-                for Blizzard Entertainment's Warcraft III.</p>
-            </div>
-          </div>
-          <div class="item" style="background-image: url(https://www.yudiz.com/codepen/expandable-animated-card-slider/far-cry-5.jpg);">
-            <div class="item-desc">
-              <h3>Far Cry 5</h3>
-              <p>Far Cry 5 is a 2018 first-person shooter game developed by Ubisoft.
-                which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-            </div>
-          </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full glass-nav border-t border-gray-800">
+            <div class="flex flex-col p-6 space-y-4 text-center">
+                <a href="#about" class="text-gray-300 hover:text-white">About</a>
+                <a href="#instagram" class="text-gray-300 hover:text-white">Creator Hub</a>
+                <a href="#experience" class="text-gray-300 hover:text-white">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-white">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-white">Contact</a>
+            </div>
         </div>
-      </section>
+    </nav>
 
-      <script>
-        $(".custom-carousel").owlCarousel({
-            autoWidth: true,
-            loop: true
-          });
-          $(document).ready(function () {
-            $(".custom-carousel .item").click(function () {
-              $(".custom-carousel .item").not($(this)).removeClass("active");
-              $(this).toggleClass("active");
-            });
-          });
-          
-      </script>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center z-10">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-sm md:text-base text-gray-400 tracking-[0.2em] mb-4 uppercase">Portfolio</p>
+                <h1 class="text-5xl md:text-8xl font-bold tracking-tighter mb-6 text-white">
+                    MANISH <br class="md:hidden" />
+                    <span class="text-gradient">RAGELLA</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Exploring the frontiers of <span class="text-white font-semibold">Artificial Intelligence</span> and crafting digital experiences. 
+                    Curator of <span class="text-white font-semibold">@mr.aitechnews</span>.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#contact" class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors">
+                        Get in Touch
+                    </a>
+                    <a href="https://www.linkedin.com/in/manish-ragella/" target="_blank" class="glass-card px-8 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-colors flex items-center gap-2">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
 
+                <!-- Social Links Strip -->
+                <div class="mt-12 flex justify-center items-center gap-8 text-2xl text-gray-500">
+                    <a href="https://github.com/manish-ragella" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://wa.me/" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/mr.aitechnews/" target="_blank" class="hover:text-pink-500 hover:-translate-y-1 transition-all"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Creation / Instagram Section -->
+    <section id="instagram" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-xs font-bold tracking-widest text-purple-400 uppercase">Content Creation</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">AI Tech News</h2>
+                <a href="https://www.instagram.com/mr.aitechnews/" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors inline-flex items-center gap-2">
+                    <i class="fab fa-instagram"></i> @mr.aitechnews
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
+                <!-- Mock Instagram Card 1 -->
+                <div class="glass-card rounded-2xl p-4 group cursor-pointer">
+                    <div class="aspect-square bg-gray-900 rounded-xl mb-4 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-purple-900/40 to-blue-900/40 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-center p-6">
+                            <span class="font-bold text-xl text-white">Latest AI Tools<br>2025</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm text-gray-400">
+                        <span><i class="far fa-heart mr-1"></i> AI & Tech</span>
+                        <span><i class="fas fa-share mr-1"></i> Share</span>
+                    </div>
+                </div>
+
+                <!-- Mock Instagram Card 2 -->
+                <div class="glass-card rounded-2xl p-4 group cursor-pointer">
+                    <div class="aspect-square bg-gray-900 rounded-xl mb-4 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-pink-900/40 to-purple-900/40 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-center p-6">
+                            <span class="font-bold text-xl text-white">ChatGPT vs Gemini<br>Comparison</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm text-gray-400">
+                        <span><i class="far fa-heart mr-1"></i> Reviews</span>
+                        <span><i class="fas fa-share mr-1"></i> Share</span>
+                    </div>
+                </div>
+
+                <!-- Mock Instagram Card 3 -->
+                <div class="glass-card rounded-2xl p-4 group cursor-pointer">
+                    <div class="aspect-square bg-gray-900 rounded-xl mb-4 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-cyan-900/40 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-center p-6">
+                            <span class="font-bold text-xl text-white">Future of<br>Robotics</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm text-gray-400">
+                        <span><i class="far fa-heart mr-1"></i> News</span>
+                        <span><i class="fas fa-share mr-1"></i> Share</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.instagram.com/mr.aitechnews/" target="_blank" class="inline-block px-8 py-3 rounded-full border border-gray-700 hover:border-white hover:bg-white hover:text-black transition-all duration-300">
+                    View Full Feed
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">About Me</span>
+                    <h2 class="text-4xl font-bold mt-2 mb-6">Driven by Data, <br><span class="text-gray-500">Inspired by Innovation.</span></h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        I am Manish Ragella, a passionate developer and content creator focusing on the rapidly evolving landscape of Artificial Intelligence. 
+                        With a strong foundation in technology and a creative mindset, I bridge the gap between complex tech concepts and accessible content.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Through my platform <span class="text-white">@mr.aitechnews</span>, I keep thousands updated with the latest breakthroughs, ensuring that the future of tech is understood by all.
+                    </p>
+                    
+                    <div class="mt-8 flex gap-4">
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold text-white">2+</h3>
+                            <p class="text-sm text-gray-500">Years Exp</p>
+                        </div>
+                        <div class="w-px bg-gray-800"></div>
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold text-white">50+</h3>
+                            <p class="text-sm text-gray-500">Projects</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Grid -->
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card p-6 rounded-xl">
+                            <i class="fab fa-python text-3xl text-yellow-500 mb-4"></i>
+                            <h3 class="font-bold text-white">Python & AI</h3>
+                            <p class="text-sm text-gray-500 mt-2">Machine Learning, Data Analysis, Automation.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl">
+                            <i class="fas fa-code text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-white">Web Dev</h3>
+                            <p class="text-sm text-gray-500 mt-2">Responsive Design, Modern Frameworks.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl">
+                            <i class="fas fa-video text-3xl text-pink-500 mb-4"></i>
+                            <h3 class="font-bold text-white">Content</h3>
+                            <p class="text-sm text-gray-500 mt-2">Video Editing, Social Media Strategy.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl">
+                            <i class="fas fa-database text-3xl text-green-500 mb-4"></i>
+                            <h3 class="font-bold text-white">Data</h3>
+                            <p class="text-sm text-gray-500 mt-2">Database Management, Analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 bg-gradient-to-b from-black to-gray-900/20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center" data-aos="fade-up">Professional Journey</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-8">
+                <!-- Timeline Item 1 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-white" data-aos="fade-up">
+                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-2 py-1 rounded">Present</span>
+                    <h3 class="text-2xl font-bold text-white">Founder & Creator</h3>
+                    <p class="text-purple-400 mb-4">MR AI Tech News</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Curating and publishing daily content regarding Artificial Intelligence advancements. 
+                        Building a community of tech enthusiasts and keeping them informed about tools like ChatGPT, Gemini, and Midjourney.
+                    </p>
+                </div>
+
+                <!-- Timeline Item 2 (Placeholder based on request) -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-gray-700 hover:border-white transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-2 py-1 rounded">2023 - Present</span>
+                    <h3 class="text-2xl font-bold text-white">Software Developer (Intern/Student)</h3>
+                    <p class="text-gray-400 mb-4">Your University / Company Name</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Working on full-stack web applications and AI integration projects. 
+                        (Note: Please update this section with your specific role details from LinkedIn).
+                    </p>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-gray-700 hover:border-white transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-2 py-1 rounded">2021 - 2023</span>
+                    <h3 class="text-2xl font-bold text-white">Tech Enthusiast & Learner</h3>
+                    <p class="text-gray-400 mb-4">Self-Employed</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Started journey into coding, learning Python, Java, and Web Technologies. Built foundation for current projects.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">Portfolio</span>
+                    <h2 class="text-4xl font-bold mt-2">Featured Projects</h2>
+                </div>
+                <a href="https://github.com/manish-ragella" target="_blank" class="text-sm text-gray-400 hover:text-white mt-4 md:mt-0 underline underline-offset-4">View GitHub</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-robot text-4xl text-white"></i>
+                        <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">AI News Aggregator</h3>
+                    <p class="text-gray-400 text-sm mb-6 line-clamp-3">
+                        A web application that automatically curates the latest AI news from various sources using Python scripts and APIs, presenting them in a clean feed.
+                    </p>
+                    <div class="flex gap-2 text-xs text-gray-500 font-mono">
+                        <span class="bg-white/5 px-2 py-1 rounded">Python</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">API</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Automation</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-chart-line text-4xl text-white"></i>
+                        <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Stock/Crypto Predictor</h3>
+                    <p class="text-gray-400 text-sm mb-6 line-clamp-3">
+                        Machine learning model designed to analyze historical data and predict trends. Built to understand time-series analysis and data visualization.
+                    </p>
+                    <div class="flex gap-2 text-xs text-gray-500 font-mono">
+                        <span class="bg-white/5 px-2 py-1 rounded">ML</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Pandas</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">React</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-laptop-code text-4xl text-white"></i>
+                        <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Personal Portfolio V1</h3>
+                    <p class="text-gray-400 text-sm mb-6 line-clamp-3">
+                        The first iteration of my personal brand website, focusing on responsiveness and clean UI/UX principles using pure HTML/CSS and JS.
+                    </p>
+                    <div class="flex gap-2 text-xs text-gray-500 font-mono">
+                        <span class="bg-white/5 px-2 py-1 rounded">HTML5</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">CSS3</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">JS</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-shield-alt text-4xl text-white"></i>
+                        <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Cybersecurity Tool</h3>
+                    <p class="text-gray-400 text-sm mb-6 line-clamp-3">
+                        A network scanning utility or vulnerability assessment script created for educational purposes to understand network security protocols.
+                    </p>
+                    <div class="flex gap-2 text-xs text-gray-500 font-mono">
+                        <span class="bg-white/5 px-2 py-1 rounded">Linux</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Bash</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Networking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <!-- Glow Effect -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-radial from-purple-900/20 to-transparent opacity-50 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="max-w-2xl mx-auto" data-aos="zoom-in">
+                <h2 class="text-5xl md:text-6xl font-bold mb-8">Let's Create <br>Something <span class="text-gray-500">Amazing.</span></h2>
+                <p class="text-gray-400 mb-10 text-lg">
+                    Whether you want to discuss AI trends, collaborate on a project, or just say hi.
+                </p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                    <a href="https://wa.me/" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-green-500/10 transition-colors">
+                        <i class="fab fa-whatsapp text-2xl text-green-500 mb-2"></i>
+                        <span class="text-sm">WhatsApp</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/manish-ragella/" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-blue-600/10 transition-colors">
+                        <i class="fab fa-linkedin text-2xl text-blue-600 mb-2"></i>
+                        <span class="text-sm">LinkedIn</span>
+                    </a>
+                    <a href="https://twitter.com" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-white/10 transition-colors">
+                        <i class="fab fa-x-twitter text-2xl text-white mb-2"></i>
+                        <span class="text-sm">X / Twitter</span>
+                    </a>
+                    <a href="mailto:contact@manishragella.com" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-red-500/10 transition-colors">
+                        <i class="fas fa-envelope text-2xl text-red-500 mb-2"></i>
+                        <span class="text-sm">Email</span>
+                    </a>
+                </div>
+
+                <p class="text-gray-600 text-sm">© 2025 Manish Ragella. All Rights Reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+        });
+
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Blur on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+    </script>
 </body>
 </html>
