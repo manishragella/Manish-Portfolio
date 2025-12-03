@@ -5,17 +5,32 @@ AOS.init({
     duration: 800,
 });
 
-// Loader
+// --- LOADER LOGIC ---
+
+// 1. Immediately lock the scroll so user sees only the Black screen
+document.body.classList.add('no-scroll');
+
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => {
+    
+    // 2. Force the code to WAIT for 2500ms (2.5 seconds)
+    setTimeout(() => {
+        if (loader) {
+            // Start fading out the black screen
             loader.style.opacity = '0';
+            
+            // 3. Wait for the fade animation (1s) to finish, then remove loader
             setTimeout(() => {
                 loader.style.display = 'none';
-            }, 500);
-        }, 1000);
-    }
+                
+                // Unlock the scroll so user can use the site
+                document.body.classList.remove('no-scroll');
+                
+                // Trigger AOS animations (Profile pic, text, etc.) NOW
+                AOS.refresh(); 
+            }, 1000); 
+        }
+    }, 2500); // <-- This 2500 is the delay in milliseconds. Increase to 3000 for longer.
 });
 
 // Mobile Menu Toggle
@@ -153,3 +168,4 @@ if (contactForm && submitBtn) {
         });
     });
 }
+
