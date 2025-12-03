@@ -6,6 +6,47 @@ body {
     perspective: 1000px; /* Essential for 3D Tilt */
 }
 
+/* --- LOADER STYLES --- */
+#loader {
+    position: fixed;
+    inset: 0;
+    background-color: #000000; /* Solid Black */
+    z-index: 99999; /* Super high priority to sit on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-in-out, visibility 1s;
+}
+
+/* The "MR" Text Styling */
+.loader-text {
+    font-size: 6rem; /* Bigger text */
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -2px;
+    animation: glow-pulse 2s infinite alternate;
+}
+
+/* Glow Animation for MR */
+@keyframes glow-pulse {
+    0% {
+        opacity: 0.4;
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+/* Helper to stop scrolling while loading */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -134,3 +175,4 @@ body {
     from, to { border-color: transparent }
     50% { border-color: rgba(255,255,255,0.75); }
 }
+
