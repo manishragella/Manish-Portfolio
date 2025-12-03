@@ -80,6 +80,21 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
+        
+        /* Input Fields Glass Style */
+        .glass-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
 
         /* Text Gradients */
         .text-gradient {
@@ -164,12 +179,19 @@
             </a>
             
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-400">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#instagram" class="hover:text-white transition-colors">Creator</a>
                 <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-white transition-colors">Skills</a>
                 <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-                <a href="#contact" class="px-5 py-2 rounded-full border border-gray-700 hover:bg-white hover:text-black transition-all">Contact</a>
+                
+                <div class="flex items-center gap-3 ml-4 border-l border-gray-700 pl-6">
+                    <a href="#contact" class="px-5 py-2 rounded-full border border-gray-700 hover:bg-white hover:text-black transition-all">Contact</a>
+                    <a href="Manish_Ragella_Resume.pdf" download class="px-5 py-2 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all flex items-center gap-2">
+                        <span>My Resume</span> <i class="fas fa-download text-xs"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -184,8 +206,10 @@
                 <a href="#about" class="text-gray-300 hover:text-white">About</a>
                 <a href="#instagram" class="text-gray-300 hover:text-white">Creator Hub</a>
                 <a href="#experience" class="text-gray-300 hover:text-white">Experience</a>
+                <a href="#skills" class="text-gray-300 hover:text-white">Skills</a>
                 <a href="#projects" class="text-gray-300 hover:text-white">Projects</a>
                 <a href="#contact" class="text-gray-300 hover:text-white">Contact</a>
+                <a href="Manish_Ragella_Resume.pdf" download class="text-white font-bold">Download Resume</a>
             </div>
         </div>
     </nav>
@@ -194,14 +218,14 @@
     <section class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
         <div class="container mx-auto px-6 text-center z-10">
             <div data-aos="fade-up" data-aos-duration="1000">
-                <p class="text-sm md:text-base text-gray-400 tracking-[0.2em] mb-4 uppercase">Portfolio</p>
+                <p class="text-sm md:text-base text-gray-400 tracking-[0.2em] mb-4 uppercase">Hyderabad, India</p>
                 <h1 class="text-5xl md:text-8xl font-bold tracking-tighter mb-6 text-white">
                     MANISH <br class="md:hidden" />
                     <span class="text-gradient">RAGELLA</span>
                 </h1>
                 <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Exploring the frontiers of <span class="text-white font-semibold">Artificial Intelligence</span> and crafting digital experiences. 
-                    Curator of <span class="text-white font-semibold">@mr.aitechnews</span>.
+                    Software Developer specializing in <span class="text-white font-semibold">AI & ML</span>. 
+                    Merging technical expertise in Python and Azure with creative storytelling at <span class="text-white font-semibold">@mr.aitechnews</span>.
                 </p>
                 
                 <div class="flex flex-wrap justify-center gap-4">
@@ -215,9 +239,9 @@
 
                 <!-- Social Links Strip -->
                 <div class="mt-12 flex justify-center items-center gap-8 text-2xl text-gray-500">
-                    <a href="https://github.com/manish-ragella" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/manishragella" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-github"></i></a>
                     <a href="https://twitter.com" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://wa.me/" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/919866291311" target="_blank" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://www.instagram.com/mr.aitechnews/" target="_blank" class="hover:text-pink-500 hover:-translate-y-1 transition-all"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
@@ -287,57 +311,129 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (Separate) -->
     <section id="about" class="py-24">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-16 items-center">
-                <div class="w-full md:w-1/2" data-aos="fade-right">
-                    <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">About Me</span>
-                    <h2 class="text-4xl font-bold mt-2 mb-6">Driven by Data, <br><span class="text-gray-500">Inspired by Innovation.</span></h2>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        I am Manish Ragella, a passionate developer and content creator focusing on the rapidly evolving landscape of Artificial Intelligence. 
-                        With a strong foundation in technology and a creative mindset, I bridge the gap between complex tech concepts and accessible content.
-                    </p>
-                    <p class="text-gray-400 leading-relaxed">
-                        Through my platform <span class="text-white">@mr.aitechnews</span>, I keep thousands updated with the latest breakthroughs, ensuring that the future of tech is understood by all.
-                    </p>
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">About Me</span>
+                <h2 class="text-4xl font-bold mt-2 mb-6">Innovative Developer <br><span class="text-gray-500">Problem Solver</span></h2>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <p class="text-gray-400 leading-relaxed mb-6">
+                            I am Manish Ragella, a B.Tech graduate in CSE (AI & ML) from Swami Vivekananda Institute of Technology, JNTUH. I have a passion for building intelligent systems and intuitive web experiences. With hands-on experience in full-stack development and AI tool integration, I aim to create impactful digital solutions.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed">
+                            I hold certifications in <strong>Microsoft Azure (AZ-900)</strong> and Python from Cisco. My adaptability and communication skills allow me to thrive in collaborative environments.
+                        </p>
+                    </div>
                     
-                    <div class="mt-8 flex gap-4">
-                        <div class="text-center">
-                            <h3 class="text-3xl font-bold text-white">2+</h3>
-                            <p class="text-sm text-gray-500">Years Exp</p>
-                        </div>
-                        <div class="w-px bg-gray-800"></div>
-                        <div class="text-center">
-                            <h3 class="text-3xl font-bold text-white">50+</h3>
-                            <p class="text-sm text-gray-500">Projects</p>
+                    <div class="w-full md:w-auto">
+                        <div class="glass-card p-6 rounded-xl min-w-[300px]">
+                            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-graduation-cap mr-2"></i> Education</h3>
+                            <div class="mb-4">
+                                <p class="text-white font-semibold">B.Tech - CSE (AI & ML)</p>
+                                <p class="text-sm text-gray-500">Swami Vivekananda Institute of Technology</p>
+                                <p class="text-xs text-gray-600 mt-1">2020 - 2024 | CGPA: 7.0</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Skills Grid -->
-                <div class="w-full md:w-1/2" data-aos="fade-left">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="glass-card p-6 rounded-xl">
-                            <i class="fab fa-python text-3xl text-yellow-500 mb-4"></i>
-                            <h3 class="font-bold text-white">Python & AI</h3>
-                            <p class="text-sm text-gray-500 mt-2">Machine Learning, Data Analysis, Automation.</p>
-                        </div>
-                        <div class="glass-card p-6 rounded-xl">
-                            <i class="fas fa-code text-3xl text-blue-500 mb-4"></i>
-                            <h3 class="font-bold text-white">Web Dev</h3>
-                            <p class="text-sm text-gray-500 mt-2">Responsive Design, Modern Frameworks.</p>
-                        </div>
-                        <div class="glass-card p-6 rounded-xl">
-                            <i class="fas fa-video text-3xl text-pink-500 mb-4"></i>
-                            <h3 class="font-bold text-white">Content</h3>
-                            <p class="text-sm text-gray-500 mt-2">Video Editing, Social Media Strategy.</p>
-                        </div>
-                        <div class="glass-card p-6 rounded-xl">
-                            <i class="fas fa-database text-3xl text-green-500 mb-4"></i>
-                            <h3 class="font-bold text-white">Data</h3>
-                            <p class="text-sm text-gray-500 mt-2">Database Management, Analytics.</p>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (Separate & Categorized) -->
+    <section id="skills" class="py-24 bg-gray-900/20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">Expertise</span>
+                <h2 class="text-4xl font-bold mt-2 text-white">Technical Skills</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
+                <!-- Programming -->
+                <div class="glass-card p-6 rounded-xl hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-terminal text-2xl text-yellow-500"></i>
+                        <h3 class="font-bold text-white text-lg">Programming</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-python text-blue-400 mr-1"></i> Python</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-java text-red-400 mr-1"></i> Java</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fas fa-code text-gray-400 mr-1"></i> C</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fas fa-database text-blue-300 mr-1"></i> SQL</span>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="glass-card p-6 rounded-xl hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-laptop-code text-2xl text-blue-500"></i>
+                        <h3 class="font-bold text-white text-lg">Web Development</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-html5 text-orange-500 mr-1"></i> HTML</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-css3-alt text-blue-500 mr-1"></i> CSS</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-js text-yellow-400 mr-1"></i> JavaScript</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-bootstrap text-purple-600 mr-1"></i> Bootstrap</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-figma text-pink-500 mr-1"></i> Figma</span>
+                    </div>
+                </div>
+
+                <!-- AI Tools -->
+                <div class="glass-card p-6 rounded-xl hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-brain text-2xl text-purple-500"></i>
+                        <h3 class="font-bold text-white text-lg">AI Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">ChatGPT</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">Perplexity</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">Grok</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">Cursor</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">Motiff</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">Google AI Studio</span>
+                    </div>
+                </div>
+
+                <!-- Cloud -->
+                <div class="glass-card p-6 rounded-xl hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-cloud text-2xl text-cyan-500"></i>
+                        <h3 class="font-bold text-white text-lg">Cloud</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-microsoft text-blue-400 mr-1"></i> Microsoft Azure</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">AZ-900</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">AZ-104</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="glass-card p-6 rounded-xl hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-toolbox text-2xl text-gray-400"></i>
+                        <h3 class="font-bold text-white text-lg">Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-git-alt text-red-500 mr-1"></i> Git</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-github text-white mr-1"></i> GitHub</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300">Canva</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fab fa-windows text-blue-400 mr-1"></i> MS Office</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="glass-card p-6 rounded-xl hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-users text-2xl text-green-500"></i>
+                        <h3 class="font-bold text-white text-lg">Soft Skills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fas fa-lightbulb text-yellow-300 mr-1"></i> Problem Solving</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fas fa-clock text-gray-300 mr-1"></i> Time Management</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fas fa-comments text-blue-300 mr-1"></i> Communication</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"><i class="fas fa-sync text-green-300 mr-1"></i> Adaptability</span>
                     </div>
                 </div>
             </div>
@@ -349,37 +445,41 @@
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold mb-16 text-center" data-aos="fade-up">Professional Journey</h2>
             
-            <div class="max-w-3xl mx-auto space-y-8">
-                <!-- Timeline Item 1 -->
-                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-white" data-aos="fade-up">
-                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-2 py-1 rounded">Present</span>
-                    <h3 class="text-2xl font-bold text-white">Founder & Creator</h3>
-                    <p class="text-purple-400 mb-4">MR AI Tech News</p>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Curating and publishing daily content regarding Artificial Intelligence advancements. 
-                        Building a community of tech enthusiasts and keeping them informed about tools like ChatGPT, Gemini, and Midjourney.
-                    </p>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Job 1 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-white hover:bg-white/5 transition-colors" data-aos="fade-up">
+                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-3 py-1 rounded">Feb 2024 - Jul 2024</span>
+                    <h3 class="text-2xl font-bold text-white">Project Intern Trainee</h3>
+                    <p class="text-purple-400 mb-4 font-semibold">Tecnics Integration Pvt Ltd, Hyderabad</p>
+                    <div class="text-gray-400 text-sm leading-relaxed space-y-2">
+                        <p>• Contributed to <span class="text-white">Alwataneya</span>, a vehicle auction platform, assisting in both web and mobile UI design.</p>
+                        <p>• Designed admin dashboard UI in Figma aligned with enterprise UX guidelines.</p>
+                        <p>• Supported frontend implementation using modern web frameworks.</p>
+                        <p>• Researched AI tool integration in enterprise UI workflows.</p>
+                    </div>
+                    <div class="flex gap-2 mt-4 text-xs font-mono text-gray-500">
+                        <span class="bg-white/5 px-2 py-1 rounded">UI/UX</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Figma</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">AI Research</span>
+                    </div>
                 </div>
 
-                <!-- Timeline Item 2 (Placeholder based on request) -->
-                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-gray-700 hover:border-white transition-colors" data-aos="fade-up" data-aos-delay="100">
-                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-2 py-1 rounded">2023 - Present</span>
-                    <h3 class="text-2xl font-bold text-white">Software Developer (Intern/Student)</h3>
-                    <p class="text-gray-400 mb-4">Your University / Company Name</p>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Working on full-stack web applications and AI integration projects. 
-                        (Note: Please update this section with your specific role details from LinkedIn).
-                    </p>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-gray-700 hover:border-white transition-colors" data-aos="fade-up" data-aos-delay="200">
-                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-2 py-1 rounded">2021 - 2023</span>
-                    <h3 class="text-2xl font-bold text-white">Tech Enthusiast & Learner</h3>
-                    <p class="text-gray-400 mb-4">Self-Employed</p>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Started journey into coding, learning Python, Java, and Web Technologies. Built foundation for current projects.
-                    </p>
+                <!-- Job 2 -->
+                <div class="glass-card p-8 rounded-2xl relative border-l-4 border-gray-700 hover:border-blue-500 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <span class="absolute top-8 right-8 text-xs font-mono text-gray-500 border border-gray-800 px-3 py-1 rounded">Jul 2023 - Jan 2024</span>
+                    <h3 class="text-2xl font-bold text-white">Web Developer Intern</h3>
+                    <p class="text-purple-400 mb-4 font-semibold">Edodwaja Pvt Ltd, Hyderabad</p>
+                    <div class="text-gray-400 text-sm leading-relaxed space-y-2">
+                        <p>• Integrated front-end designs using HTML, CSS, and Bootstrap, successfully <span class="text-white">reducing bounce rate by 25%</span>.</p>
+                        <p>• Developed two responsive websites, enhancing UI and increasing engagement by 10%.</p>
+                        <p>• Built e-commerce features and optimized UI using JavaScript and SQL.</p>
+                        <p>• Improved page load times, boosting SEO and overall user experience.</p>
+                    </div>
+                    <div class="flex gap-2 mt-4 text-xs font-mono text-gray-500">
+                        <span class="bg-white/5 px-2 py-1 rounded">HTML/CSS</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Bootstrap</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">SQL</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -393,76 +493,62 @@
                     <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">Portfolio</span>
                     <h2 class="text-4xl font-bold mt-2">Featured Projects</h2>
                 </div>
-                <a href="https://github.com/manish-ragella" target="_blank" class="text-sm text-gray-400 hover:text-white mt-4 md:mt-0 underline underline-offset-4">View GitHub</a>
+                <a href="https://github.com/manishragella" target="_blank" class="text-sm text-gray-400 hover:text-white mt-4 md:mt-0 underline underline-offset-4">View GitHub</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
+                <!-- Project 1: Diabetes Prediction -->
                 <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up">
                     <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-robot text-4xl text-white"></i>
+                        <i class="fas fa-heartbeat text-4xl text-red-500"></i>
                         <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">AI News Aggregator</h3>
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Diabetes Prediction System</h3>
                     <p class="text-gray-400 text-sm mb-6 line-clamp-3">
-                        A web application that automatically curates the latest AI news from various sources using Python scripts and APIs, presenting them in a clean feed.
+                        Built a web app using Flask and Python to predict diabetes using health metrics. 
+                        Trained Logistic Regression and Random Forest models on the PIMA dataset with extensive data preprocessing and feature scaling.
                     </p>
                     <div class="flex gap-2 text-xs text-gray-500 font-mono">
                         <span class="bg-white/5 px-2 py-1 rounded">Python</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">API</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">Automation</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Flask</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">ML</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Scikit-learn</span>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 2: AI Tech News (Personal Brand) -->
                 <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-chart-line text-4xl text-white"></i>
-                        <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
+                        <i class="fab fa-instagram text-4xl text-pink-500"></i>
+                        <a href="https://www.instagram.com/mr.aitechnews/" target="_blank" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Stock/Crypto Predictor</h3>
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">MR AI Tech News</h3>
                     <p class="text-gray-400 text-sm mb-6 line-clamp-3">
-                        Machine learning model designed to analyze historical data and predict trends. Built to understand time-series analysis and data visualization.
+                        Founder and curator of an AI tech news platform. Creating daily content to simplify complex AI updates for a broad audience, fostering a community of tech enthusiasts.
                     </p>
                     <div class="flex gap-2 text-xs text-gray-500 font-mono">
-                        <span class="bg-white/5 px-2 py-1 rounded">ML</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">Pandas</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">React</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Content</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">AI Tools</span>
+                        <span class="bg-white/5 px-2 py-1 rounded">Social Media</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Project 3 -->
-                <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-laptop-code text-4xl text-white"></i>
-                        <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Personal Portfolio V1</h3>
-                    <p class="text-gray-400 text-sm mb-6 line-clamp-3">
-                        The first iteration of my personal brand website, focusing on responsiveness and clean UI/UX principles using pure HTML/CSS and JS.
-                    </p>
-                    <div class="flex gap-2 text-xs text-gray-500 font-mono">
-                        <span class="bg-white/5 px-2 py-1 rounded">HTML5</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">CSS3</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">JS</span>
-                    </div>
+    <!-- Certifications Section -->
+    <section class="py-12 bg-gray-900/30">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-8 text-gray-300">Certifications</h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="glass-card px-6 py-3 rounded-full text-sm text-gray-400 flex items-center gap-2">
+                    <i class="fab fa-microsoft text-blue-400"></i> Azure Fundamentals (AZ-900)
                 </div>
-
-                <!-- Project 4 -->
-                <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-shield-alt text-4xl text-white"></i>
-                        <a href="#" class="text-gray-500 hover:text-white"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Cybersecurity Tool</h3>
-                    <p class="text-gray-400 text-sm mb-6 line-clamp-3">
-                        A network scanning utility or vulnerability assessment script created for educational purposes to understand network security protocols.
-                    </p>
-                    <div class="flex gap-2 text-xs text-gray-500 font-mono">
-                        <span class="bg-white/5 px-2 py-1 rounded">Linux</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">Bash</span>
-                        <span class="bg-white/5 px-2 py-1 rounded">Networking</span>
-                    </div>
+                <div class="glass-card px-6 py-3 rounded-full text-sm text-gray-400 flex items-center gap-2">
+                    <i class="fab fa-python text-yellow-400"></i> Python Essentials (Cisco)
+                </div>
+                <div class="glass-card px-6 py-3 rounded-full text-sm text-gray-400 flex items-center gap-2">
+                    <i class="fas fa-certificate text-green-400"></i> Web Dev Internship (Edodwaja)
                 </div>
             </div>
         </div>
@@ -473,34 +559,69 @@
         <!-- Glow Effect -->
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-radial from-purple-900/20 to-transparent opacity-50 pointer-events-none"></div>
 
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="max-w-2xl mx-auto" data-aos="zoom-in">
-                <h2 class="text-5xl md:text-6xl font-bold mb-8">Let's Create <br>Something <span class="text-gray-500">Amazing.</span></h2>
-                <p class="text-gray-400 mb-10 text-lg">
-                    Whether you want to discuss AI trends, collaborate on a project, or just say hi.
-                </p>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16">
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-                    <a href="https://wa.me/" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-green-500/10 transition-colors">
-                        <i class="fab fa-whatsapp text-2xl text-green-500 mb-2"></i>
-                        <span class="text-sm">WhatsApp</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/manish-ragella/" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-blue-600/10 transition-colors">
-                        <i class="fab fa-linkedin text-2xl text-blue-600 mb-2"></i>
-                        <span class="text-sm">LinkedIn</span>
-                    </a>
-                    <a href="https://twitter.com" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-white/10 transition-colors">
-                        <i class="fab fa-x-twitter text-2xl text-white mb-2"></i>
-                        <span class="text-sm">X / Twitter</span>
-                    </a>
-                    <a href="mailto:contact@manishragella.com" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-red-500/10 transition-colors">
-                        <i class="fas fa-envelope text-2xl text-red-500 mb-2"></i>
-                        <span class="text-sm">Email</span>
-                    </a>
+                <!-- Left: Info -->
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8">Let's Create <br>Something <span class="text-gray-500">Amazing.</span></h2>
+                    <p class="text-gray-400 mb-10 text-lg">
+                        Whether you want to discuss AI trends, collaborate on a project, or just say hi.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <a href="https://wa.me/919866291311" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-green-500/10 transition-colors text-center">
+                            <i class="fab fa-whatsapp text-2xl text-green-500 mb-2"></i>
+                            <span class="text-sm">WhatsApp</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/manish-ragella/" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-blue-600/10 transition-colors text-center">
+                            <i class="fab fa-linkedin text-2xl text-blue-600 mb-2"></i>
+                            <span class="text-sm">LinkedIn</span>
+                        </a>
+                        <a href="https://twitter.com" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-white/10 transition-colors text-center">
+                            <i class="fab fa-x-twitter text-2xl text-white mb-2"></i>
+                            <span class="text-sm">X / Twitter</span>
+                        </a>
+                        <a href="mailto:manishragellaworkspace@gmail.com" class="glass-card p-4 rounded-xl flex flex-col items-center hover:bg-red-500/10 transition-colors text-center">
+                            <i class="fas fa-envelope text-2xl text-red-500 mb-2"></i>
+                            <span class="text-sm">Email</span>
+                        </a>
+                    </div>
                 </div>
 
-                <p class="text-gray-600 text-sm">© 2025 Manish Ragella. All Rights Reserved.</p>
+                <!-- Right: Form -->
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <form action="https://formsubmit.co/manishmani41168@gmail.com" method="POST" target="_blank" class="glass-card p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+                        
+                        <!-- Honeypot (To avoid spam) -->
+                        <input type="text" name="_honey" style="display:none">
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm text-gray-400 mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg glass-input focus:border-purple-500" placeholder="John Doe">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm text-gray-400 mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg glass-input focus:border-purple-500" placeholder="john@example.com">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm text-gray-400 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg glass-input focus:border-purple-500" placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full py-3 px-6 rounded-lg bg-white text-black font-bold hover:bg-gray-200 transition-all transform hover:scale-[1.02]">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
+
+            <p class="text-gray-600 text-sm text-center mt-16">© 2025 Manish Ragella. All Rights Reserved. <br> Hyderabad, Telangana, India.</p>
         </div>
     </section>
 
